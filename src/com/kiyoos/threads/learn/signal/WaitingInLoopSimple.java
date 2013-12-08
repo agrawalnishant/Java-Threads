@@ -1,10 +1,10 @@
 package com.kiyoos.threads.learn.signal;
 
-public class BusyWaitingNoSynchronized implements Runnable {
+public class WaitingInLoopSimple implements Runnable {
 
 	private MySignal mySignal;
 
-	public BusyWaitingNoSynchronized(MySignal mySignal) {
+	public WaitingInLoopSimple(MySignal mySignal) {
 		this.mySignal = mySignal;
 	}
 
@@ -40,11 +40,11 @@ public class BusyWaitingNoSynchronized implements Runnable {
 
 	public static void main(String[] args) {
 		MySignal mySignal = new MySignal();
-		Thread p1 = new Thread(new BusyWaitingNoSynchronized(mySignal), "1");
-		Thread p2 = new Thread(new BusyWaitingNoSynchronized(mySignal), " 2");
-		Thread p3 = new Thread(new BusyWaitingNoSynchronized(mySignal),
+		Thread p1 = new Thread(new WaitingInLoopSimple(mySignal), "1");
+		Thread p2 = new Thread(new WaitingInLoopSimple(mySignal), " 2");
+		Thread p3 = new Thread(new WaitingInLoopSimple(mySignal),
 				"  3");
-		Thread p4 = new Thread(new BusyWaitingNoSynchronized(mySignal),
+		Thread p4 = new Thread(new WaitingInLoopSimple(mySignal),
 				"   4");
 
 		p4.start();
