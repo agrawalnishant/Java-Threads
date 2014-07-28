@@ -5,7 +5,7 @@ import java.util.List;
 
 public class MyBlockingQueue<E> {
 
-	private final int limit ;
+	private final int limit;
 	private final List<E> queue;
 
 	public MyBlockingQueue(int limit) {
@@ -17,9 +17,11 @@ public class MyBlockingQueue<E> {
 
 		while (queue.size() >= limit) {
 			try {
+
+				System.out.println(" Producer is going to wait.");
 				wait();
 				System.out.println("Producer waited.");
-				
+
 			} catch (InterruptedException ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
@@ -36,6 +38,8 @@ public class MyBlockingQueue<E> {
 			try {
 				System.out.println("  ---  Consumer is going to wait.");
 				wait();
+
+				System.out.println("  --- Consumer waited.");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

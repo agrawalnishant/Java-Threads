@@ -9,7 +9,7 @@ public class Producer implements Runnable {
 	}
 
 	public void run() {
-		for (int count = 0; count < (queue.getLimit() * 3); count++) {
+		for (int count = 0; count < (queue.getLimit() * 4); count++) {
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
