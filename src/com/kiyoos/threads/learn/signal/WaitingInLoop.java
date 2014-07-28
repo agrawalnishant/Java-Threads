@@ -20,7 +20,7 @@ public class WaitingInLoop implements Runnable {
 			while (++counter < 5) {
 				System.out.println(Thread.currentThread()  + " is working.");
 				try {
-					Thread.sleep(500);
+					Thread.sleep(50);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -38,13 +38,15 @@ public class WaitingInLoop implements Runnable {
 		MySignal mySignal = new MySignal();
 		Thread p1 = new Thread(new WaitingInLoop(mySignal), "P 1");
 		Thread p2 = new Thread(new WaitingInLoop(mySignal), "P   2");
-		Thread p3 = new Thread(new WaitingInLoop(mySignal), "P     3");
+		
 		Thread p4 = new Thread(new WaitingInLoop(mySignal), "P       4");
+		Thread p3 = new Thread(new WaitingInLoop(mySignal), "P     3");
 		
 		p4.start();
 		p3.start();
-		p2.start();
+		
 		p1.start();
+		p2.start();
 		
 		
 	}

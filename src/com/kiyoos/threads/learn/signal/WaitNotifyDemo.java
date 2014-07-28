@@ -57,7 +57,7 @@ public class WaitNotifyDemo implements Runnable {
 		for (int count = 0; count < 2; count++) {
 			resource.work();
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,7 +69,7 @@ public class WaitNotifyDemo implements Runnable {
 		for (int count = 0; count < 3; count++) {
 			resource.work();
 			try {
-				Thread.sleep(2000);
+				Thread.sleep(500);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
