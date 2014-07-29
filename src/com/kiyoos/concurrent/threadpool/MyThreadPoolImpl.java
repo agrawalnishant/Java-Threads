@@ -33,7 +33,7 @@ public class MyThreadPoolImpl implements MyThreadPool {
 		if (isStopped == true) {
 			throw new IllegalStateException("ThreadPool is stopped");
 		}
-		this.taskQueue.enque(task);
+		this.taskQueue.offer(task);
 	}
 
 	@SuppressWarnings("deprecation")

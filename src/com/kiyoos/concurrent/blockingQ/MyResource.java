@@ -11,7 +11,7 @@ public class MyResource implements Runnable {
 	}
 
 	public void run() {
-		System.out.println("Thread [" + Thread.currentThread() + " ]  -- " + this + " working");
+		System.out.println(Thread.currentThread() + "\t\t" + this + " working");
 		try {
 			Thread.sleep(500);
 		} catch (InterruptedException e) {

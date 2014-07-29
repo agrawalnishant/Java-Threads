@@ -1,30 +1,35 @@
 package com.kiyoos.concurrent.blockingQ;
 
-public class Producer implements Runnable {
+import java.util.Queue;
 
-	private MyBlockingQueue<MyResource> queue;
+public class Producer<Q extends Queue> implements Runnable {
+
+	private Queue<MyResource> queue;
 
 	private String name;
 
-	public Producer(MyBlockingQueue<MyResource> queue, String name) {
+	private final int limit;
+
+	public Producer(Q queue, String name, int limit) {
 		this.queue = queue;
 		this.name = name;
+		this.limit = limit;
 	}
 
 	public void run() {
-		for (int count = 0; count < (queue.getLimit() * 4); count++) {
+		for (int count = 0; count < limit; count++) {
 			try {
-				Thread.sleep(100);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			MyResource res = MyResource.Factory.get();
 			System.out.println(" Producer[" + name + "] >>>>>>> " + res);
-			queue.enque(res);
+			queue.offer(res);
 		}
 
-		queue.enque(new MyResource(-1));
+		queue.offer(new MyResource(-1));
 
 	}
 

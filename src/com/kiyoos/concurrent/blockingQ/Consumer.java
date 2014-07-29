@@ -1,11 +1,13 @@
 package com.kiyoos.concurrent.blockingQ;
 
-public class Consumer implements Runnable {
+import java.util.Queue;
 
-	private MyBlockingQueue<MyResource> queue;
+public class Consumer<Q extends Queue> implements Runnable {
+
+	private Queue<MyResource> queue;
 	private String name;
 
-	public Consumer(MyBlockingQueue<MyResource> queue, String name) {
+	public Consumer(Q queue, String name) {
 		this.queue = queue;
 		this.name = name;
 	}
@@ -15,15 +17,30 @@ public class Consumer implements Runnable {
 		int response = 0;
 		MyResource responseRes = null;
 		while (response != -1) {
-			responseRes = queue.deque();
+			
+			try {
+				Thread.sleep(300);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			responseRes = queue.poll();
 			response = responseRes.getId();
-			responseRes.run();
 			System.out.println(" \t Consumer[" + name + "]  <<<<<<< " + response);
-		}
-		
-		//Propagate the STOP signal so that other threads can stop.
-		queue.enque(responseRes);
+			responseRes.run();
 
+		}
+
+		// Propagate the STOP signal so that other threads can stop.
+		queue.offer(responseRes);
+
+	}
+
+	/**
+	 * @return the name
+	 */
+	public String getName() {
+		return name;
 	}
 
 }

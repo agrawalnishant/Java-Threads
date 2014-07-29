@@ -1,16 +1,17 @@
 package com.kiyoos.concurrent.threadpool;
 
 import com.kiyoos.concurrent.blockingQ.MyBlockingQueue;
+import com.kiyoos.concurrent.blockingQ.MyResource;
 
 public class WorkerThread extends Thread {
 
-	private final MyBlockingQueue taskQueue;
+	private final MyBlockingQueue<Runnable> taskQueue;
 
 	private final String name;
 
 	private boolean isStopped;
 
-	public WorkerThread(final MyBlockingQueue taskQueue, final String name) {
+	public WorkerThread(final MyBlockingQueue<Runnable> taskQueue, final String name) {
 		this.taskQueue = taskQueue;
 		this.name = name;
 
@@ -19,7 +20,7 @@ public class WorkerThread extends Thread {
 	public void run() {
 
 		while (!isStopped) {
-			Runnable task = taskQueue.deque();
+			Runnable task = taskQueue.poll();
 			task.run();
 		}
 	}
