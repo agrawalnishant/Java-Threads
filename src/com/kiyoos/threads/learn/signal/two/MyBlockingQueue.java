@@ -36,10 +36,10 @@ public class MyBlockingQueue<E> {
 
 		while (queue.size() <= 0) {
 			try {
-				System.out.println("  ---  Consumer is going to wait.");
+				System.out.println("  ---  Consumer " + Thread.currentThread() +" is going to wait.");
 				wait();
 
-				System.out.println("  --- Consumer waited.");
+				System.out.println("  --- Consumer"+ Thread.currentThread() +" waited.");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
