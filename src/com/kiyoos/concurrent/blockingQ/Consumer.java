@@ -19,7 +19,7 @@ public class Consumer<Q extends Queue> implements Runnable {
 		while (response != -1) {
 			
 			try {
-				Thread.sleep(300);
+				Thread.sleep(200);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

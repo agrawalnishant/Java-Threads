@@ -9,9 +9,9 @@ public class MyThreadPoolTest {
 
 	// An interesting observation: decreasing queue size increases pool
 	// throughput.
-	private static final int QUEUE_SIZE = 2;
+	private static final int QUEUE_SIZE = 5;
 
-	private static final int THREAD_POOL_SIZE = 5;
+	private static final int THREAD_POOL_SIZE = 3;
 
 	private static final int TASK_COUNT = 30;
 

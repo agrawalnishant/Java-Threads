@@ -21,7 +21,7 @@ public class MyBlockingQueue<E> implements Queue<E> {
 
 		while (queue.size() >= limit) {
 			try {
-
+				System.out.println(Thread.currentThread() + " will wait now.");
 				wait();
 
 			} catch (InterruptedException ex) {
@@ -31,10 +31,6 @@ public class MyBlockingQueue<E> implements Queue<E> {
 		notifyAll();
 		return queue.add(e);
 	}
-	
-	
-	
-	
 
 	@Override
 	public synchronized E poll() {
@@ -51,14 +47,6 @@ public class MyBlockingQueue<E> implements Queue<E> {
 		return queue.remove(0);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
 	/**
 	 * @return the limit
 	 */

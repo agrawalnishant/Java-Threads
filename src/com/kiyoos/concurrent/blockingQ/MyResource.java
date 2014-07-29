@@ -13,7 +13,7 @@ public class MyResource implements Runnable {
 	public void run() {
 		System.out.println(Thread.currentThread() + "\t\t" + this + " working");
 		try {
-			Thread.sleep(500);
+			Thread.sleep(700);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
