@@ -1,4 +1,4 @@
-package com.kiyoos.threads.learn.signal.two;
+package com.kiyoos.concurrent;
 
 public class Producer implements Runnable {
 

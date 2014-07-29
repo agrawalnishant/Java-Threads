@@ -1,4 +1,9 @@
-package com.kiyoos.threads.learn.signal.two;
+package com.kiyoos.concurrent.test;
+
+import com.kiyoos.concurrent.Consumer;
+import com.kiyoos.concurrent.MyBlockingQueue;
+import com.kiyoos.concurrent.MyResource;
+import com.kiyoos.concurrent.Producer;
 
 public class MyBlockingQueueTest {
 
@@ -12,8 +17,8 @@ public class MyBlockingQueueTest {
 
 		blockingQueue = new MyBlockingQueue<MyResource>(5);
 		producer = new Producer(blockingQueue);
-		consumer1 = new Consumer(blockingQueue);
-		consumer2 = new Consumer(blockingQueue);
+		consumer1 = new Consumer(blockingQueue, "1");
+		consumer2 = new Consumer(blockingQueue,"2");
 
 		new Thread(consumer1).start();
 		new Thread(consumer2).start();

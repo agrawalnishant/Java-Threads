@@ -1,11 +1,13 @@
-package com.kiyoos.threads.learn.signal.two;
+package com.kiyoos.concurrent;
 
 public class Consumer implements Runnable {
 
 	private MyBlockingQueue<MyResource> queue;
+	private String name;
 
-	public Consumer(MyBlockingQueue<MyResource> queue) {
+	public Consumer(MyBlockingQueue<MyResource> queue, String name) {
 		this.queue = queue;
+		this.name = name;
 	}
 
 	public void run() {
@@ -15,13 +17,8 @@ public class Consumer implements Runnable {
 		while (response != -1) {
 			responseRes = queue.deque();
 			response = responseRes.getId();
-			try {
-				Thread.sleep(500);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			System.out.println(" -----" + Thread.currentThread() + " ---  Consuming Resource # " + response);
+			responseRes.doSomething();
+			System.out.println(" ----- Consumer[" + name + "] ---  Consumed Resource # " + response);
 		}
 		
 		//Propagate the STOP signal so that other threads can stop.

@@ -1,4 +1,4 @@
-package com.kiyoos.threads.learn.signal.two;
+package com.kiyoos.concurrent;
 
 public class MyResource {
 
@@ -10,8 +10,14 @@ public class MyResource {
 		this.id = id;
 	}
 
-	private void doSomething() {
+	public void doSomething() {
 		System.out.println(id + " is doing something");
+		try {
+			Thread.sleep(700);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	static class Factory {

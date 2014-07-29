@@ -1,4 +1,4 @@
-package com.kiyoos.threads.learn.signal.two;
+package com.kiyoos.concurrent;
 
 import java.util.LinkedList;
 import java.util.List;
