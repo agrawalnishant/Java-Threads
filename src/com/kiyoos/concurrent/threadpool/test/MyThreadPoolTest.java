@@ -11,9 +11,9 @@ public class MyThreadPoolTest {
 	// throughput.
 	private static final int QUEUE_SIZE = 2;
 
-	private static final int THREAD_POOL_SIZE = 3;
+	private static final int THREAD_POOL_SIZE = 5;
 
-	private static final int TASK_COUNT = 300;
+	private static final int TASK_COUNT = 30;
 
 	public static void main(String[] args) {
 
@@ -25,7 +25,7 @@ public class MyThreadPoolTest {
 		while (counter-- > 0) {
 			threadPool.execute(MyResource.Factory.get());
 			try {
-				Thread.sleep(100);
+				Thread.sleep(20);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
