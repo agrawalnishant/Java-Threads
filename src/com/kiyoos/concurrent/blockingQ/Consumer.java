@@ -1,4 +1,4 @@
-package com.kiyoos.concurrent;
+package com.kiyoos.concurrent.blockingQ;
 
 public class Consumer implements Runnable {
 
@@ -17,8 +17,8 @@ public class Consumer implements Runnable {
 		while (response != -1) {
 			responseRes = queue.deque();
 			response = responseRes.getId();
-			responseRes.doSomething();
-			System.out.println(" ----- Consumer[" + name + "] ---  Consumed Resource # " + response);
+			responseRes.run();
+			System.out.println(" \t Consumer[" + name + "]  <<<<<<< " + response);
 		}
 		
 		//Propagate the STOP signal so that other threads can stop.

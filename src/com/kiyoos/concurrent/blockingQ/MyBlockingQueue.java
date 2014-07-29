@@ -1,9 +1,9 @@
-package com.kiyoos.concurrent;
+package com.kiyoos.concurrent.blockingQ;
 
 import java.util.LinkedList;
 import java.util.List;
 
-public class MyBlockingQueue<E> {
+public class MyBlockingQueue<E extends Runnable> {
 
 	private final int limit;
 	private final List<E> queue;
@@ -18,9 +18,9 @@ public class MyBlockingQueue<E> {
 		while (queue.size() >= limit) {
 			try {
 
-				System.out.println(" Producer is going to wait.");
+				//System.out.println(" Producer is going to wait.");
 				wait();
-				System.out.println("Producer waited.");
+				//System.out.println("Producer waited.");
 
 			} catch (InterruptedException ex) {
 				// TODO Auto-generated catch block
@@ -36,10 +36,10 @@ public class MyBlockingQueue<E> {
 
 		while (queue.size() <= 0) {
 			try {
-				System.out.println("  ---  Consumer " + Thread.currentThread() +" is going to wait.");
+				//System.out.println("  ---  Consumer " + Thread.currentThread() +" is going to wait.");
 				wait();
 
-				System.out.println("  --- Consumer"+ Thread.currentThread() +" waited.");
+				//System.out.println("  --- Consumer"+ Thread.currentThread() +" waited.");
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

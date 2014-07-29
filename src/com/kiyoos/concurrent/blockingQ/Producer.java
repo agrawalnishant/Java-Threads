@@ -1,11 +1,14 @@
-package com.kiyoos.concurrent;
+package com.kiyoos.concurrent.blockingQ;
 
 public class Producer implements Runnable {
 
 	private MyBlockingQueue<MyResource> queue;
 
-	public Producer(MyBlockingQueue<MyResource> queue) {
+	private String name;
+
+	public Producer(MyBlockingQueue<MyResource> queue, String name) {
 		this.queue = queue;
+		this.name = name;
 	}
 
 	public void run() {
@@ -17,7 +20,7 @@ public class Producer implements Runnable {
 				e.printStackTrace();
 			}
 			MyResource res = MyResource.Factory.get();
-			System.out.println("Producing " + res);
+			System.out.println(" Producer[" + name + "] >>>>>>> " + res);
 			queue.enque(res);
 		}
 
